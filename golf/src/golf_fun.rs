@@ -31,7 +31,7 @@ pub fn golf_test() {
                     HashMap::new() as HashMap<String, i32>,
                 ),
                 |mut hmp, el| {
-                    if !hmp.0.contains(el) {
+                    if !hmp.0.contains(el) && el.len() > 1 {
                         *hmp.1.entry(el.to_string()).or_insert(0) += 1
                     };
                     hmp
