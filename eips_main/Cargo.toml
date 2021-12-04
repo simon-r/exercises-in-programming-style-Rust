@@ -9,3 +9,4 @@ edition = "2021"
 kick_forward = { path = "../kick_forward" }
 mirror =  { path = "../mirror" }
 pipe = {path = "../pipe"}
+golf = {path = "../golf"}
