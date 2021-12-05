@@ -35,7 +35,7 @@ pub fn remove_stop_words(v_str: &Vec<String>) -> Vec<String> {
     let mut res_v: Vec<String> = Vec::new();
 
     for w in v_str.iter() {
-        if stop_w_split.binary_search(&&w[..]).is_err() {
+        if stop_w_split.binary_search(&&w[..]).is_err() && w.len() > 1 {
             res_v.push(String::from(w));
         }
     }

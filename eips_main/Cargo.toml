@@ -11,3 +11,4 @@ mirror =  { path = "../mirror" }
 pipe = {path = "../pipe"}
 golf = {path = "../golf"}
 the_one = {path = "../the_one"}
+things = {path = "../things"}

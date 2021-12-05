@@ -5,6 +5,7 @@ use kick_forward;
 use mirror;
 use pipe;
 use the_one;
+use things;
 
 fn prompt(name: &str) -> String {
     let mut line = String::new();
@@ -29,6 +30,9 @@ fn main() {
     println!("  7. Infinite Mirror");
     println!("  8. Kick Froward");
     println!("  9. The One");
+    println!("");
+    println!("Part IV Objects and Object Interaction");
+    println!("  10. Things");
 
     println!("");
     println!("0. Exit");
@@ -55,10 +59,13 @@ fn main() {
         } else if select == 6 {
             golf::golf_test();
             break;
-        }  else if select == 9 {
+        } else if select == 9 {
             the_one::the_one_test();
             break;
-        }  else {
+        } else if select == 10 {
+            things::things_test();
+            break;
+        } else {
             println!("Invalid style ... try again!");
         }
     }
