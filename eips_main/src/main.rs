@@ -4,6 +4,7 @@ use golf;
 use kick_forward;
 use mirror;
 use pipe;
+use the_one;
 
 fn prompt(name: &str) -> String {
     let mut line = String::new();
@@ -21,34 +22,44 @@ fn main() {
 
     println!("");
     println!("Part II Basic Styles");
-    println!("5. Pipeline");
-    println!("6. Golf");
+    println!("  5. Pipeline");
+    println!("  6. Golf");
     println!("");
     println!("Part III Function Composition");
-    println!("7. Infinite Mirror");
-    println!("8. Kick Froward");
+    println!("  7. Infinite Mirror");
+    println!("  8. Kick Froward");
+    println!("  9. The One");
 
     println!("");
     println!("0. Exit");
     println!("");
 
     loop {
-        let select = prompt("Select Style: ");
+        let select = prompt("Select Style: ").parse::<i32>().unwrap_or(9999);
 
-        if select == "0" {
+        if select != 9999 {
+            println!("");
+        }
+
+        if select == 0 {
             break;
-        } else if select == "7" {
+        } else if select == 7 {
             mirror::mirror_test();
             break;
-        } else if select == "8" {
+        } else if select == 8 {
             kick_forward::kick_forward_test();
             break;
-        } else if select == "5" {
+        } else if select == 5 {
             pipe::pipe_test();
             break;
-        } else if select == "6" {
+        } else if select == 6 {
             golf::golf_test();
             break;
+        }  else if select == 9 {
+            the_one::the_one_test();
+            break;
+        }  else {
+            println!("Invalid style ... try again!");
         }
     }
 }

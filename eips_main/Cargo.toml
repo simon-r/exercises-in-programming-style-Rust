@@ -10,3 +10,4 @@ kick_forward = { path = "../kick_forward" }
 mirror =  { path = "../mirror" }
 pipe = {path = "../pipe"}
 golf = {path = "../golf"}
+the_one = {path = "../the_one"}
