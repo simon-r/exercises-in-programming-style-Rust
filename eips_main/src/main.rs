@@ -19,6 +19,10 @@ fn prompt(name: &str) -> String {
 }
 
 fn main() {
+
+    let file_name = String::from("data/text.txt");
+    let file_stop_w = String::from("data/stop_words.txt");
+
     println!("Hello, From: Exercises in programming style Rust");
 
     println!("");
@@ -33,6 +37,7 @@ fn main() {
     println!("");
     println!("Part IV Objects and Object Interaction");
     println!("  10. Things");
+    println!("  11. Letterbox");
 
     println!("");
     println!("0. Exit");
@@ -64,6 +69,9 @@ fn main() {
             break;
         } else if select == 10 {
             things::things_test();
+            break;
+        } else if select == 11 {
+            letterbox::letterbox_test(&file_name, &file_stop_w);
             break;
         } else {
             println!("Invalid style ... try again!");

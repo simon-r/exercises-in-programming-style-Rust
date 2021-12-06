@@ -1,14 +1,15 @@
 [package]
+edition = "2021"
 name = "eips_main"
 version = "0.1.0"
-edition = "2021"
 
 # See more keys and their definitions at https://doc.rust-lang.org/cargo/reference/manifest.html
 
 [dependencies]
-kick_forward = { path = "../kick_forward" }
-mirror =  { path = "../mirror" }
-pipe = {path = "../pipe"}
 golf = {path = "../golf"}
+kick_forward = {path = "../kick_forward"}
+letterbox = {path = "../letterbox"}
+mirror = {path = "../mirror"}
+pipe = {path = "../pipe"}
 the_one = {path = "../the_one"}
 things = {path = "../things"}

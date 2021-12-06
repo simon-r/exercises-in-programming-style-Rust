@@ -51,7 +51,7 @@ pub fn read_file(val: &Box<dyn Any>) -> Box<dyn Any> {
             return bx;
         }
         None => {
-            assert!(true, "Error: read_file");
+            assert!(false, "Error: read_file");
             let bx: Box<dyn Any> = Box::new(String::from("Error"));
             return bx;
         }
@@ -70,7 +70,7 @@ pub fn filter_chars_and_normalize(val: &Box<dyn Any>) -> Box<dyn Any> {
             return bx;
         }
         None => {
-            assert!(true, "Error: filter_chars");
+            assert!(false, "Error: filter_chars");
             let bx: Box<dyn Any> = Box::new(String::from("Error"));
             return bx;
         }
@@ -92,7 +92,7 @@ pub fn scan_str(val: &Box<dyn Any>) -> Box<dyn Any> {
             return bx;
         }
         None => {
-            assert!(true, "Error: filter_chars");
+            assert!(false, "Error: filter_chars");
             let bx: Box<dyn Any> = Box::new(String::from("Error"));
             return bx;
         }
@@ -122,7 +122,7 @@ pub fn remove_stop_words(val: &Box<dyn Any>, stop_w_file: &String) -> Box<dyn An
             return bx;
         }
         None => {
-            assert!(true, "Error: remove_stop_words");
+            assert!(false, "Error: remove_stop_words");
             let bx: Box<dyn Any> = Box::new(String::from("Error"));
             return bx;
         }
@@ -150,7 +150,7 @@ pub fn frequencies_and_sort(val: &Box<dyn Any>) -> Box<dyn Any> {
             return bx;
         }
         None => {
-            assert!(true, "Error: frequencies_and_sort");
+            assert!(false, "Error: frequencies_and_sort");
             let bx: Box<dyn Any> = Box::new(String::from("Error"));
             return bx;
         }
