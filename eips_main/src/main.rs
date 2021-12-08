@@ -6,6 +6,7 @@ use mirror;
 use pipe;
 use the_one;
 use things;
+use abstract_things;
 
 fn prompt(name: &str) -> String {
     let mut line = String::new();
@@ -38,6 +39,7 @@ fn main() {
     println!("Part IV Objects and Object Interaction");
     println!("  10. Things");
     println!("  11. Letterbox");
+    println!("  12. Abstract Things");
 
     println!("");
     println!("0. Exit");
@@ -73,7 +75,11 @@ fn main() {
         } else if select == 11 {
             letterbox::letterbox_test(&file_name, &file_stop_w);
             break;
-        } else {
+        }  else if select == 12 {
+            abstract_things::abstract_things_test(&file_name, &file_stop_w);
+            break;
+        } 
+        else {
             println!("Invalid style ... try again!");
         }
     }
