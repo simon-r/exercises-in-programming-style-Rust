@@ -1,12 +1,13 @@
 use std::io::Write;
 
+use abstract_things;
+use closed_maps;
 use golf;
 use kick_forward;
 use mirror;
 use pipe;
 use the_one;
 use things;
-use abstract_things;
 
 fn prompt(name: &str) -> String {
     let mut line = String::new();
@@ -20,7 +21,6 @@ fn prompt(name: &str) -> String {
 }
 
 fn main() {
-
     let file_name = String::from("data/text.txt");
     let file_stop_w = String::from("data/stop_words.txt");
 
@@ -72,14 +72,16 @@ fn main() {
         } else if select == 10 {
             things::things_test();
             break;
+        } else if select == 12 {
+            closed_maps::closed_maps_test(&file_name, &file_stop_w);
+            break;
         } else if select == 11 {
             letterbox::letterbox_test(&file_name, &file_stop_w);
             break;
-        }  else if select == 13 {
+        } else if select == 13 {
             abstract_things::abstract_things_test(&file_name, &file_stop_w);
             break;
-        } 
-        else {
+        } else {
             println!("Invalid style ... try again!");
         }
     }
