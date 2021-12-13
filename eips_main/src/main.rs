@@ -39,6 +39,7 @@ fn main() {
     println!("Part IV Objects and Object Interaction");
     println!("  10. Things");
     println!("  11. Letterbox");
+    println!("  12. Closes Map");
     println!("  13. Abstract Things");
 
     println!("");
