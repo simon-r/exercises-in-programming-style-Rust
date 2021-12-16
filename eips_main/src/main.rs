@@ -3,6 +3,7 @@ use std::io::Write;
 use abstract_things;
 use closed_maps;
 use golf;
+use hollywood;
 use kick_forward;
 use mirror;
 use pipe;
@@ -41,6 +42,7 @@ fn main() {
     println!("  11. Letterbox");
     println!("  12. Closes Map");
     println!("  13. Abstract Things");
+    println!("  14. Hollywood");
 
     println!("");
     println!("0. Exit");
@@ -81,6 +83,9 @@ fn main() {
             break;
         } else if select == 13 {
             abstract_things::abstract_things_test(&file_name, &file_stop_w);
+            break;
+        } else if select == 14 {
+            hollywood::hollywood_test(&file_name, &file_stop_w);
             break;
         } else {
             println!("Invalid style ... try again!");

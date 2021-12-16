@@ -9,6 +9,7 @@ version = "0.1.0"
 abstract_things = {path = "../abstract_things"}
 closed_maps = {path = "../closed_maps"}
 golf = {path = "../golf"}
+hollywood = {path = "../hollywood"}
 kick_forward = {path = "../kick_forward"}
 letterbox = {path = "../letterbox"}
 mirror = {path = "../mirror"}
