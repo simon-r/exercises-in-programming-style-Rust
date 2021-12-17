@@ -26,3 +26,4 @@ This exercise differs from the original exercise where the first N words are lis
   11. Letterbox: [letterbox_fun.rs](letterbox/src/letterbox_fun.rs)
   12. Closed Maps: [closed_maps_fun.rs](closed_maps/src/closed_maps_fun.rs)
   13. Abstract Things: [abstract_things_fun.rs](abstract_things/src/abstract_things_fun.rs)
+  14. Hollywood: [hollywood_fun.rs](hollywood/src/hollywood_fun.rs)

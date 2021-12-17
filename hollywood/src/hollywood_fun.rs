@@ -1,14 +1,15 @@
 use regex::Regex;
-
 use std::cell::RefCell;
-use std::collections::{BTreeMap, LinkedList};
+use std::collections::LinkedList;
 use std::collections::{HashMap, HashSet};
 use std::fs;
-use std::rc::{Rc, Weak};
+use std::rc::Rc;
 
 trait ProduceWordsEvent {
     fn produce_words(&mut self);
 }
+
+type RcCellProduceWordsEvent = Rc<RefCell<dyn ProduceWordsEvent>>;
 
 trait LoadDataEvent {
     fn load_data(&mut self, path_to_file: &String);
@@ -21,6 +22,12 @@ trait WordEvent {
 }
 
 type RcCellWordEv = Rc<RefCell<dyn WordEvent>>;
+
+trait ToStringEvent {
+    fn to_string(&self, res_str: Rc<RefCell<String>>);
+}
+
+type RcCellToStringEvent = Rc<RefCell<dyn ToStringEvent>>;
 
 ///////////////////////////////////////////////
 trait WordFilterEvent {
@@ -103,13 +110,14 @@ impl LoadDataEvent for DataStorage {
                 " ",
             )
             .to_string();
+        // println!("{}", self.data);
     }
 }
 
 impl ProduceWordsEvent for DataStorage {
     fn produce_words(&mut self) {
         for word in self.data.split_whitespace() {
-            if Rc::clone(&self.stop_word_filter)
+            if !Rc::clone(&self.stop_word_filter)
                 .borrow_mut()
                 .filter(&word.to_string())
             {
@@ -147,21 +155,76 @@ impl WordEvent for WordFrequencyCounter {
     }
 }
 
+impl ToStringEvent for WordFrequencyCounter {
+    fn to_string(&self, res_str: Rc<RefCell<String>>) {
+        Rc::clone(&res_str).borrow_mut().clear();
+
+        let mut res_v =
+            self.words_freq
+                .iter()
+                .fold(Vec::new(), |mut vt: Vec<(String, i32)>, el| {
+                    if el.1 > &4 {
+                        vt.push((el.0.clone(), el.1.clone()));
+                    }
+                    vt
+                });
+
+        res_v.sort_by_key(|k| -k.1);
+
+        let ss = res_v.into_iter().fold(String::new(), |mut res_str, el| {
+            res_str.push_str(&format!("{} - {}\n", el.0, el.1)[..]);
+            res_str
+        });
+
+        Rc::clone(&res_str).borrow_mut().push_str(&ss);
+    }
+}
+
 //////////////////////////////////////////////////////////////
 
 struct WordFrequencyFramework {
-    load_event_handlers: LinkedList<RcCellLoadDataEvent>,
+    load_event_handlers: LinkedList<(RcCellLoadDataEvent, String)>,
+    produce_words_handlers: LinkedList<RcCellProduceWordsEvent>,
+    to_string_handlers: LinkedList<RcCellToStringEvent>,
 }
 
 impl WordFrequencyFramework {
     fn new() -> Self {
         WordFrequencyFramework {
             load_event_handlers: LinkedList::new(),
+            produce_words_handlers: LinkedList::new(),
+            to_string_handlers: LinkedList::new(),
         }
     }
 
-    fn register_load_data_ev(&mut self, ev: &RcCellLoadDataEvent) {
-        self.load_event_handlers.push_back(Rc::clone(ev));
+    fn register_load_data_ev(&mut self, ev: &RcCellLoadDataEvent, file_name: &String) {
+        self.load_event_handlers
+            .push_back((Rc::clone(ev), file_name.clone()));
+    }
+
+    fn register_produce_words_event(&mut self, pwe: &RcCellProduceWordsEvent) {
+        self.produce_words_handlers.push_back(pwe.clone());
+    }
+
+    fn register_to_string_event(&mut self, to_str_ev: &RcCellToStringEvent) {
+        self.to_string_handlers.push_back(to_str_ev.clone());
+    }
+
+    fn run(&mut self, target_string: Rc<RefCell<String>>) {
+        for load in &self.load_event_handlers {
+            let f = Rc::clone(&load.0);
+            let arg = load.1.clone();
+
+            f.borrow_mut().load_data(&arg);
+        }
+
+        for dw in &self.produce_words_handlers {
+            Rc::clone(dw).borrow_mut().produce_words();
+        }
+
+        for ts in &self.to_string_handlers {
+            Rc::clone(ts).borrow_mut().to_string(target_string.clone());
+        }
     }
 }
 
@@ -172,7 +235,7 @@ pub fn hollywood_test(file_name: &String, file_stop_w: &String) {
     let swf = StopWordsFilter::new_rc_cell();
     {
         let swf_ld = Rc::clone(&swf) as RcCellLoadDataEvent;
-        wf_framework.register_load_data_ev(&swf_ld);
+        wf_framework.register_load_data_ev(&swf_ld, file_stop_w);
     }
 
     let swf_ev = Rc::clone(&swf) as RcCellSWFEv;
@@ -180,7 +243,7 @@ pub fn hollywood_test(file_name: &String, file_stop_w: &String) {
 
     {
         let ds_ld = Rc::clone(&ds) as RcCellLoadDataEvent;
-        wf_framework.register_load_data_ev(&ds_ld);
+        wf_framework.register_load_data_ev(&ds_ld, file_name);
     }
 
     let wfc = WordFrequencyCounter::new_rc_cell();
@@ -188,13 +251,19 @@ pub fn hollywood_test(file_name: &String, file_stop_w: &String) {
 
     Rc::clone(&ds).borrow_mut().register_word_event(&wfc_wev);
 
-    // Rc::clone(&swf).borrow_mut().load_data(file_stop_w);
+    {
+        let ds_pw = Rc::clone(&ds) as RcCellProduceWordsEvent;
+        wf_framework.register_produce_words_event(&ds_pw);
+    }
 
-    // let f = Rc::clone(&swf).borrow_mut().filter(&"the".to_string());
-    // let swf_ev = Rc::clone(&swf) as RcCellSWFEv;
+    {
+        let to_str_ev = Rc::clone(&wfc) as RcCellToStringEvent;
+        wf_framework.register_to_string_event(&to_str_ev);
+    }
 
-    // println!("{}", f);
+    let ts = Rc::new(RefCell::new(String::new()));
 
-    // let f2 = Rc::clone(&swf_ev).borrow_mut().filter(&"in".to_string());
-    // println!("{}", f2);
+    wf_framework.run(ts.clone());
+
+    println!("{}", Rc::clone(&ts).borrow_mut());
 }
