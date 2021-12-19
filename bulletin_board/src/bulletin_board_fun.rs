@@ -56,7 +56,7 @@ impl EventManager {
         let ev_list = self.events_map.get(ev).unwrap();
 
         for h_fun in ev_list {
-            Rc::clone(&h_fun).borrow()(Rc::clone(arg));
+            Rc::clone(h_fun).borrow()(Rc::clone(arg));
         }
     }
 }
