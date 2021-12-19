@@ -267,7 +267,9 @@ impl WordsFrequencies {
 
     fn insert_word(&mut self, word: &String) {
         // println!("insert w {}", word);
-        *self.words_frequencies.entry(word.clone()).or_insert(0) += 1;
+        if word.len() > 1 {
+            *self.words_frequencies.entry(word.clone()).or_insert(0) += 1;
+        }
     }
 
     fn print_to_string(&self, min_freq: i32, target_str: &mut String) {
