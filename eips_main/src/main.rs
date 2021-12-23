@@ -1,6 +1,7 @@
 use std::io::Write;
 
 use abstract_things;
+use aspects;
 use bulletin_board;
 use closed_maps;
 use golf;
@@ -45,6 +46,9 @@ fn main() {
     println!("  13. Abstract Things");
     println!("  14. Hollywood");
     println!("  15. Bulletin Board");
+    println!("");
+    println!("Part V Reflection and Metaprogramming");
+    println!("  18. Bulletin Board");
 
     println!("");
     println!("0. Exit");
@@ -91,6 +95,9 @@ fn main() {
             break;
         } else if select == 15 {
             bulletin_board::bulletin_board_test(&file_name, &file_stop_w);
+            break;
+        } else if select == 18 {
+            aspects::aspects_test(&file_name, &file_stop_w);
             break;
         } else {
             println!("Invalid style ... try again!");

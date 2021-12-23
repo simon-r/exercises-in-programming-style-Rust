@@ -28,3 +28,11 @@ This exercise differs from the original exercise where the first N words are lis
   13. Abstract Things: [abstract_things_fun.rs](abstract_things/src/abstract_things_fun.rs)
   14. Hollywood: [hollywood_fun.rs](hollywood/src/hollywood_fun.rs)
   15. Bulletin Board: [bulletin_board_fun.rs](bulletin_board/src/bulletin_board_fun.rs)
+
+#### Part V Reflection and Metaprogramming
+
+16. Introspective
+17. Reflective
+18. Aspects [aspects_fun.rs](aspects/src/aspects_fun.rs)
+19. Plugins
+
