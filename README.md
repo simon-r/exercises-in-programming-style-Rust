@@ -31,8 +31,11 @@ This exercise differs from the original exercise where the first N words are lis
 
 #### Part V Reflection and Metaprogramming
 
-16. Introspective
-17. Reflective
-18. Aspects [aspects_fun.rs](aspects/src/aspects_fun.rs)
-19. Plugins
+  16. Introspective: back-tracking in Rust is not always available, and depends on the compilation options.
+  17. Reflective: Rust is not a scripting language.
+  18. Aspects: [aspects_fun.rs](aspects/src/aspects_fun.rs)
+  19. Plugins: This demo based on libraries is a good example on plugins.
 
+#### Part VI Adversity
+
+  20. Constructivist:
