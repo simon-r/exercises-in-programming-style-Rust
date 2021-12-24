@@ -38,4 +38,4 @@ This exercise differs from the original exercise where the first N words are lis
 
 #### Part VI Adversity
 
-  20. Constructivist:
+  20. Constructivist: [constructivist_fun.rs](constructivist/src/constructivist_fun.rs)
