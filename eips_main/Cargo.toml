@@ -10,12 +10,13 @@ abstract_things = {path = "../abstract_things"}
 aspects = {path = "../aspects"}
 bulletin_board = {path = "../bulletin_board"}
 closed_maps = {path = "../closed_maps"}
+constructivist = {path = "../constructivist"}
 golf = {path = "../golf"}
 hollywood = {path = "../hollywood"}
 kick_forward = {path = "../kick_forward"}
 letterbox = {path = "../letterbox"}
 mirror = {path = "../mirror"}
 pipe = {path = "../pipe"}
+tantrum = {path = "../tantrum"}
 the_one = {path = "../the_one"}
 things = {path = "../things"}
-constructivist = {path = "../constructivist"}

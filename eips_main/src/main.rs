@@ -4,6 +4,7 @@ use abstract_things;
 use aspects;
 use bulletin_board;
 use closed_maps;
+use constructivist;
 use golf;
 use hollywood;
 use kick_forward;
@@ -11,7 +12,6 @@ use mirror;
 use pipe;
 use the_one;
 use things;
-use constructivist;
 
 fn prompt(name: &str) -> String {
     let mut line = String::new();
@@ -53,6 +53,7 @@ fn main() {
     println!("");
     println!("Part VI Adversity");
     println!("  20. Constructivist");
+    println!("  21. Tantrum");
     println!("");
     println!("0. Exit");
     println!("");
@@ -104,6 +105,9 @@ fn main() {
             break;
         } else if select == 20 {
             constructivist::constructivist_test(&file_name, &file_stop_w);
+            break;
+        } else if select == 21 {
+            tantrum::tantrum_test(&file_name, &file_stop_w);
             break;
         } else {
             println!("Invalid style ... try again!");
