@@ -50,7 +50,9 @@ fn main() {
     println!("");
     println!("Part V Reflection and Metaprogramming");
     println!("  18. Bulletin Board");
-
+    println!("");
+    println!("Part VI Reflection and Metaprogramming");
+    println!("  20. Constructivist");
     println!("");
     println!("0. Exit");
     println!("");
