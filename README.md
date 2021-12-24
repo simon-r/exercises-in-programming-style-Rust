@@ -40,3 +40,6 @@ This exercise differs from the original exercise where the first N words are lis
 
   20. Constructivist: [constructivist_fun.rs](constructivist/src/constructivist_fun.rs)
   21. Tantrum: [tantrum_fun.rs](tantrum/src/tantrum_fun.rs)
+  22. Passive Aggressive. Just another error control (pass).
+  23. Declared Intentions. Rust has a strong typing.
+  24. Quarantine.
