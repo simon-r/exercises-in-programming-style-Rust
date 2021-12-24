@@ -11,6 +11,7 @@ use mirror;
 use pipe;
 use the_one;
 use things;
+use constructivist;
 
 fn prompt(name: &str) -> String {
     let mut line = String::new();
@@ -98,6 +99,9 @@ fn main() {
             break;
         } else if select == 18 {
             aspects::aspects_test(&file_name, &file_stop_w);
+            break;
+        } else if select == 20 {
+            constructivist::constructivist_test(&file_name, &file_stop_w);
             break;
         } else {
             println!("Invalid style ... try again!");
