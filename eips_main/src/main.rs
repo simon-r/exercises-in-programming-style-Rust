@@ -10,6 +10,7 @@ use hollywood;
 use kick_forward;
 use mirror;
 use pipe;
+use quarantine;
 use the_one;
 use things;
 
@@ -54,6 +55,7 @@ fn main() {
     println!("Part VI Adversity");
     println!("  20. Constructivist");
     println!("  21. Tantrum");
+    println!("  24. Quarantine");
     println!("");
     println!("0. Exit");
     println!("");
@@ -108,6 +110,9 @@ fn main() {
             break;
         } else if select == 21 {
             tantrum::tantrum_test(&file_name, &file_stop_w);
+            break;
+        } else if select == 24 {
+            quarantine::quarantine_test(&file_name, &file_stop_w);
             break;
         } else {
             println!("Invalid style ... try again!");

@@ -42,4 +42,4 @@ This exercise differs from the original exercise where the first N words are lis
   21. Tantrum: [tantrum_fun.rs](tantrum/src/tantrum_fun.rs)
   22. Passive Aggressive. Just another error control (pass).
   23. Declared Intentions. Rust has a strong typing.
-  24. Quarantine.
+  24. Quarantine. [quarantine_fun.rs](quarantine/src/quarantine_fun.rs)
