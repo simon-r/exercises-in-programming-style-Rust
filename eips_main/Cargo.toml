@@ -16,6 +16,7 @@ hollywood = {path = "../hollywood"}
 kick_forward = {path = "../kick_forward"}
 letterbox = {path = "../letterbox"}
 mirror = {path = "../mirror"}
+persistent_tables = {path = "../persistent_tables"}
 pipe = {path = "../pipe"}
 quarantine = {path = "../quarantine"}
 tantrum = {path = "../tantrum"}

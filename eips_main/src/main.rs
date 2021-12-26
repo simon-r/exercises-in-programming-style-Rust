@@ -9,6 +9,7 @@ use golf;
 use hollywood;
 use kick_forward;
 use mirror;
+use persistent_tables;
 use pipe;
 use quarantine;
 use the_one;
@@ -56,6 +57,8 @@ fn main() {
     println!("  20. Constructivist");
     println!("  21. Tantrum");
     println!("  24. Quarantine");
+    println!("");
+    println!("Part VII Data-Centric");
     println!("");
     println!("0. Exit");
     println!("");
@@ -113,6 +116,9 @@ fn main() {
             break;
         } else if select == 24 {
             quarantine::quarantine_test(&file_name, &file_stop_w);
+            break;
+        } else if select == 25 {
+            persistent_tables::persistent_tables_test(&file_name, &file_stop_w);
             break;
         } else {
             println!("Invalid style ... try again!");
