@@ -88,6 +88,7 @@ impl MyDataBase {
                 (
                     SELECT stop_word FROM stop_words
                 )
+                AND LENGTH(word) > 1
                 GROUP BY word
                 HAVING COUNT(word) > {}
                 ORDER BY COUNT(word) DESC;
