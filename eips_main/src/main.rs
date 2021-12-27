@@ -59,6 +59,7 @@ fn main() {
     println!("  24. Quarantine");
     println!("");
     println!("Part VII Data-Centric");
+    println!("  25. Persistent Tables");
     println!("");
     println!("0. Exit");
     println!("");

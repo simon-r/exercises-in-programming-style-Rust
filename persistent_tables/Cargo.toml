@@ -7,4 +7,4 @@ edition = "2021"
 
 [dependencies]
 regex = "1"
-rusqlite = ">=0.26.3" 
+sqlite = ">=0.24" 
