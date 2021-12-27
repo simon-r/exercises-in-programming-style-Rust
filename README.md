@@ -43,3 +43,7 @@ This exercise differs from the original exercise where the first N words are lis
   22. Passive Aggressive. Just another error control (pass).
   23. Declared Intentions. Rust has a strong typing.
   24. Quarantine. [quarantine_fun.rs](quarantine/src/quarantine_fun.rs)
+
+#### Part VII Data-Centric
+
+  25. Persistent Tables [persistent_tables_fun.rs](persistent_tables/src/persistent_tables_fun.rs)
