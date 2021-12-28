@@ -47,3 +47,4 @@ This exercise differs from the original exercise where the first N words are lis
 #### Part VII Data-Centric
 
   25. Persistent Tables [persistent_tables_fun.rs](persistent_tables/src/persistent_tables_fun.rs)
+  27. Lazy Rivers [lazy_rivers_fun.rs](lazy_rivers/src/lazy_rivers_fun.rs)

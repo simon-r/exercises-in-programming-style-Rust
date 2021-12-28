@@ -8,6 +8,7 @@ use constructivist;
 use golf;
 use hollywood;
 use kick_forward;
+use lazy_rivers;
 use mirror;
 use persistent_tables;
 use pipe;
@@ -60,6 +61,7 @@ fn main() {
     println!("");
     println!("Part VII Data-Centric");
     println!("  25. Persistent Tables");
+    println!("  27. Lazy Rivers");
     println!("");
     println!("0. Exit");
     println!("");
@@ -120,6 +122,9 @@ fn main() {
             break;
         } else if select == 25 {
             persistent_tables::persistent_tables_test(&file_name, &file_stop_w);
+            break;
+        } else if select == 27 {
+            lazy_rivers::lazy_rivers_test(&file_name, &file_stop_w);
             break;
         } else {
             println!("Invalid style ... try again!");
