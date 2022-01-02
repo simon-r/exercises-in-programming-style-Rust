@@ -15,6 +15,7 @@ golf = {path = "../golf"}
 hollywood = {path = "../hollywood"}
 kick_forward = {path = "../kick_forward"}
 lazy_rivers = {path = "../lazy_rivers"}
+lazy_rivers_mp = {path = "../lazy_rivers_mp"}
 letterbox = {path = "../letterbox"}
 mirror = {path = "../mirror"}
 persistent_tables = {path = "../persistent_tables"}

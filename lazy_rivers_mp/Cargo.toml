@@ -1,5 +1,5 @@
 [package]
-name = "lazy_rivers"
+name = "lazy_rivers_mp"
 version = "0.1.0"
 edition = "2021"
 

@@ -9,6 +9,7 @@ use golf;
 use hollywood;
 use kick_forward;
 use lazy_rivers;
+use lazy_rivers_mp;
 use mirror;
 use persistent_tables;
 use pipe;
@@ -60,8 +61,9 @@ fn main() {
     println!("  24. Quarantine");
     println!("");
     println!("Part VII Data-Centric");
-    println!("  25. Persistent Tables");
-    println!("  27. Lazy Rivers");
+    println!("  25.  Persistent Tables");
+    println!("  27.  Lazy Rivers:  Iterators");
+    println!("  271. Lazy Rivers:  Message Passing");
     println!("");
     println!("0. Exit");
     println!("");
@@ -69,9 +71,7 @@ fn main() {
     loop {
         let select = prompt("Select Style: ").parse::<i32>().unwrap_or(9999);
 
-        if select != 9999 {
-            println!("");
-        }
+        println!("");
 
         if select == 0 {
             break;
@@ -125,6 +125,9 @@ fn main() {
             break;
         } else if select == 27 {
             lazy_rivers::lazy_rivers_test(&file_name, &file_stop_w);
+            break;
+        } else if select == 271 {
+            lazy_rivers_mp::lazy_rivers_mp_test(&file_name, &file_stop_w);
             break;
         } else {
             println!("Invalid style ... try again!");
