@@ -34,7 +34,7 @@ fn all_words(send_to_next: &Sender<Option<String>>) -> Sender<Option<char>> {
                     if c.is_alphabetic() {
                         word.push(c);
                     } else {
-                        if word.len() > 0 {
+                        if word.len() > 1 {
                             send_to_next_clone
                                 .send(Some(word.to_lowercase().clone()))
                                 .unwrap();
