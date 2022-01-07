@@ -7,6 +7,7 @@ version = "0.1.0"
 
 [dependencies]
 abstract_things = {path = "../abstract_things"}
+actors = {path = "../actors"}
 aspects = {path = "../aspects"}
 bulletin_board = {path = "../bulletin_board"}
 closed_maps = {path = "../closed_maps"}

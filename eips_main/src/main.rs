@@ -1,6 +1,7 @@
 use std::io::Write;
 
 use abstract_things;
+use actors;
 use aspects;
 use bulletin_board;
 use closed_maps;
@@ -128,6 +129,9 @@ fn main() {
             break;
         } else if select == 271 {
             lazy_rivers_mp::lazy_rivers_mp_test(&file_name, &file_stop_w);
+            break;
+        } else if select == 28 {
+            actors::actors_test(&file_name, &file_stop_w);
             break;
         } else {
             println!("Invalid style ... try again!");
