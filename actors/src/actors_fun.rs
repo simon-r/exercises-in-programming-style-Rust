@@ -225,19 +225,17 @@ impl StopWordsManager {
                 };
                 self.init(&file_name);
             } else if msg.message == "filter" {
-                let word = match msg.msg_data {
-                    MessageData::WordData(s) => String::from(s),
-                    MessageData::Eof => String::new(),
+                match msg.msg_data {
+                    MessageData::WordData(word) => {
+                        self.filter(&word);
+                    }
+                    MessageData::Eof => {
+                        let _ = self.send_to_next.send(eof_message!(String::from("word")));
+                    }
                     _ => {
                         assert!(false, "some error in SW filter message");
-                        String::new()
                     }
                 };
-                if word.len() > 0 {
-                    self.filter(&word);
-                } else {
-                    let _ = self.send_to_next.send(eof_message!(String::from("word")));
-                }
             }
         }
     }
