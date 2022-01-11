@@ -66,6 +66,9 @@ fn main() {
     println!("  27.  Lazy Rivers:  Iterators");
     println!("  271. Lazy Rivers:  Message Passing");
     println!("");
+    println!("Part VIII Data-Centric");
+    println!("  28.  Actors");
+    println!("");
     println!("0. Exit");
     println!("");
 
