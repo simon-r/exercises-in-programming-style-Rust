@@ -6,6 +6,7 @@ use aspects;
 use bulletin_board;
 use closed_maps;
 use constructivist;
+use dataspaces;
 use golf;
 use hollywood;
 use kick_forward;
@@ -66,7 +67,7 @@ fn main() {
     println!("  27.  Lazy Rivers:  Iterators");
     println!("  271. Lazy Rivers:  Message Passing");
     println!("");
-    println!("Part VIII Data-Centric");
+    println!("Part VIII Concurrency");
     println!("  28.  Actors");
     println!("");
     println!("0. Exit");
@@ -135,6 +136,9 @@ fn main() {
             break;
         } else if select == 28 {
             actors::actors_test(&file_name, &file_stop_w);
+            break;
+        } else if select == 29 {
+            dataspaces::dataspaces_test(&file_name, &file_stop_w);
             break;
         } else {
             println!("Invalid style ... try again!");
