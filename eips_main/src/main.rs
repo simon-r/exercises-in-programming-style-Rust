@@ -69,6 +69,7 @@ fn main() {
     println!("");
     println!("Part VIII Concurrency");
     println!("  28.  Actors");
+    println!("  29.  Data-spaces");
     println!("");
     println!("0. Exit");
     println!("");

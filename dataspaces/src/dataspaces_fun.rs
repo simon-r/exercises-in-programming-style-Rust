@@ -1,8 +1,6 @@
 use regex::Regex;
-use std::borrow::BorrowMut;
-use std::collections::{BTreeMap, HashMap, HashSet, LinkedList};
+use std::collections::{HashMap, HashSet, LinkedList};
 use std::fs;
-use std::sync::mpsc::{self, Receiver, Sender};
 use std::sync::{Arc, Mutex};
 use std::thread::{self, JoinHandle};
 
@@ -13,16 +11,18 @@ macro_rules! make_arc_mutex {
 }
 
 pub fn dataspaces_test(file_name: &String, file_stop_w: &String) {
-    let mut word_space = make_arc_mutex!(LinkedList::<String>::new());
-    let mut freq_space = make_arc_mutex!(HashMap::<String, i32>::new());
+    let word_space = make_arc_mutex!(LinkedList::<String>::new());
+    let freq_space = make_arc_mutex!(HashMap::<String, i32>::new());
 
-    let stop_words = Arc::new(fs::read_to_string(file_stop_w)
-        .expect("something went wrong in reading stop words")
-        .split(",")
-        .fold(HashSet::new(), |mut hs, el| {
-            hs.insert(String::from(el));
-            hs
-        }));
+    let stop_words = Arc::new(
+        fs::read_to_string(file_stop_w)
+            .expect("something went wrong in reading stop words")
+            .split(",")
+            .fold(HashSet::new(), |mut hs, el| {
+                hs.insert(String::from(el));
+                hs
+            }),
+    );
 
     let data = fs::read_to_string(file_name).expect("something went wrong in reading data");
 
@@ -35,7 +35,9 @@ pub fn dataspaces_test(file_name: &String, file_stop_w: &String) {
 
     let mut jj = LinkedList::<JoinHandle<()>>::new();
 
-    for n in 0..20 {
+    let threads_nr = 20;
+
+    for _ in 0..threads_nr {
         let freq_space_clone = freq_space.clone();
         let word_space_clone = word_space.clone();
         let stop_words_clone = stop_words.clone();
@@ -45,7 +47,6 @@ pub fn dataspaces_test(file_name: &String, file_stop_w: &String) {
                 Some(str) => str,
                 None => {
                     break;
-                    String::from("")
                 }
             };
 
@@ -53,16 +54,17 @@ pub fn dataspaces_test(file_name: &String, file_stop_w: &String) {
                 continue;
             }
 
-            let f = freq_space_clone.lock().unwrap().get(&word).cloned();
+            let mut f = freq_space_clone.lock().unwrap();
 
-            match f {
+            match f.get(&word).cloned() {
                 Some(v) => {
-                    freq_space_clone.lock().unwrap().insert(word, v + 1);
+                    f.insert(word, v + 1);
                 }
                 None => {
-                    freq_space_clone.lock().unwrap().insert(word, 1);
+                    f.insert(word, 1);
                 }
             };
+            drop(f);
         });
 
         jj.push_back(join);
@@ -72,7 +74,17 @@ pub fn dataspaces_test(file_name: &String, file_stop_w: &String) {
         let _ = j.join();
     }
 
+    let mut res = Vec::<(String, i32)>::new();
+
     for f in freq_space.lock().unwrap().iter() {
-        println!("{} {}", f.0, f.1);
+        if *f.1 > 5 && f.0.len() > 2 {
+            res.push((f.0.clone(), f.1.clone()));
+        }
+    }
+
+    res.sort_by_key(|v| -v.1);
+
+    for v in res {
+        println!("{} {}", v.0, v.1);
     }
 }
