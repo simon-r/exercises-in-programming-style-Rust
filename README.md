@@ -55,3 +55,4 @@ This exercise differs from the original exercise where the first N words are lis
 #### Part VIII Concurrency
 
   28. Actors [actors_fun.rs](actors/src/actors_fun.rs)
+  29. Data-spaces [dataspaces_fun.rs](dataspaces/src/dataspaces_fun.rs)
