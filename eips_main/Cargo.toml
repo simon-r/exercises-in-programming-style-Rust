@@ -19,6 +19,7 @@ kick_forward = {path = "../kick_forward"}
 lazy_rivers = {path = "../lazy_rivers"}
 lazy_rivers_mp = {path = "../lazy_rivers_mp"}
 letterbox = {path = "../letterbox"}
+map_reduce = {path = "../map_reduce"}
 mirror = {path = "../mirror"}
 persistent_tables = {path = "../persistent_tables"}
 pipe = {path = "../pipe"}

@@ -12,6 +12,7 @@ use hollywood;
 use kick_forward;
 use lazy_rivers;
 use lazy_rivers_mp;
+use map_reduce;
 use mirror;
 use persistent_tables;
 use pipe;
@@ -70,6 +71,7 @@ fn main() {
     println!("Part VIII Concurrency");
     println!("  28.  Actors");
     println!("  29.  Data-spaces");
+    println!("  30.  Map Reduce");
     println!("");
     println!("0. Exit");
     println!("");
@@ -140,6 +142,9 @@ fn main() {
             break;
         } else if select == 29 {
             dataspaces::dataspaces_test(&file_name, &file_stop_w);
+            break;
+        } else if select == 30 {
+            map_reduce::map_reduce_test(&file_name, &file_stop_w);
             break;
         } else {
             println!("Invalid style ... try again!");
