@@ -1,3 +1,4 @@
+use rayon::prelude::*;
 use regex::Regex;
 use std::collections::{HashMap, HashSet};
 use std::fs;
@@ -56,11 +57,14 @@ pub fn map_reduce_test(file_name: &String, file_stop_w: &String) {
         vf.push(wf.clone());
     }
 
-    let freq = vf.into_iter().reduce(|a, b| merge_freq(a, b));
+    let freq_pr = vf.into_par_iter().reduce(
+        || Arc::new(Mutex::new(HashMap::new())),
+        |a, b| merge_freq(a, b),
+    );
 
     let mut vf = Vec::<(String, i32)>::new();
 
-    for str_f in freq.unwrap().lock().ok().unwrap().iter() {
+    for str_f in freq_pr.lock().ok().unwrap().iter() {
         if *str_f.1 > 4 {
             vf.push((str_f.0.clone(), str_f.1.clone()));
         }
