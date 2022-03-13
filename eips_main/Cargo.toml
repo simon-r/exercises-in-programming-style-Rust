@@ -13,6 +13,7 @@ bulletin_board = {path = "../bulletin_board"}
 closed_maps = {path = "../closed_maps"}
 constructivist = {path = "../constructivist"}
 dataspaces = {path = "../dataspaces"}
+double_map_reduce = {path = "../double_map_reduce"}
 golf = {path = "../golf"}
 hollywood = {path = "../hollywood"}
 kick_forward = {path = "../kick_forward"}

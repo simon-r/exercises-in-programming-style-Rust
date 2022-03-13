@@ -7,6 +7,7 @@ use bulletin_board;
 use closed_maps;
 use constructivist;
 use dataspaces;
+use double_map_reduce;
 use golf;
 use hollywood;
 use kick_forward;
@@ -72,6 +73,7 @@ fn main() {
     println!("  28.  Actors");
     println!("  29.  Data-spaces");
     println!("  30.  Map Reduce");
+    println!("  31.  Double Map Reduce");
     println!("");
     println!("0. Exit");
     println!("");
@@ -145,6 +147,9 @@ fn main() {
             break;
         } else if select == 30 {
             map_reduce::map_reduce_test(&file_name, &file_stop_w);
+            break;
+        } else if select == 31 {
+            double_map_reduce::double_map_reduce_test(&file_name, &file_stop_w);
             break;
         } else {
             println!("Invalid style ... try again!");

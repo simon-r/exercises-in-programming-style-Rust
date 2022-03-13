@@ -57,3 +57,4 @@ This exercise differs from the original exercise where the first N words are lis
   28. Actors [actors_fun.rs](actors/src/actors_fun.rs)
   29. Data-spaces [dataspaces_fun.rs](dataspaces/src/dataspaces_fun.rs)
   30. Map Reduce [map_reduce_fun.rs](map_reduce/src/map_reduce_fun.rs)
+  31. Double Map Reduce [double_map_reduce_fun.rs](double_map_reduce/src/double_map_reduce_fun.rs)
