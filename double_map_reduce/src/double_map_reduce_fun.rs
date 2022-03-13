@@ -58,17 +58,12 @@ pub fn double_map_reduce_test(file_name: &String, file_stop_w: &String) {
 
         let j = thread::spawn(move || loop {
             let mut buf = String::new();
-            let mut stop_read = false;
 
             for _l in 0..nlines {
-                let line_sz: i32 = match reader_clone.lock().ok().unwrap().read_line(&mut buf) {
+                let _line_sz: i32 = match reader_clone.lock().ok().unwrap().read_line(&mut buf) {
                     Ok(v) => v as i32,
                     Err(_v) => -1 as i32,
                 };
-
-                if line_sz == 0 {
-                    stop_read = true;
-                }
             }
 
             let mut vf = Vec::<WordsFreq>::new();
@@ -77,8 +72,6 @@ pub fn double_map_reduce_test(file_name: &String, file_stop_w: &String) {
                 .unwrap()
                 .replace_all(&buf.to_lowercase(), " ")
                 .to_string();
-
-            // println!("{} {}", data, data.len());
 
             for w in data.split_whitespace() {
                 if stop_words_clone.lock().ok().unwrap().contains(w) || w.len() < 3 {
@@ -98,10 +91,6 @@ pub fn double_map_reduce_test(file_name: &String, file_stop_w: &String) {
                     return;
                 }
             };
-
-            if stop_read {
-                return;
-            }
         });
         join_vec.push(j);
     }
