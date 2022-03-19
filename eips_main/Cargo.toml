@@ -28,3 +28,4 @@ quarantine = {path = "../quarantine"}
 tantrum = {path = "../tantrum"}
 the_one = {path = "../the_one"}
 things = {path = "../things"}
+trinity = {path = "../trinity"}

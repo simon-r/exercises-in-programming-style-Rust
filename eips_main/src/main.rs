@@ -20,6 +20,7 @@ use pipe;
 use quarantine;
 use the_one;
 use things;
+use trinity;
 
 fn prompt(name: &str) -> String {
     let mut line = String::new();
@@ -75,6 +76,7 @@ fn main() {
     println!("  30.  Map Reduce");
     println!("  31.  Double Map Reduce");
     println!("");
+    println!("Part IX Interactivity");
     println!("0. Exit");
     println!("");
 
@@ -150,6 +152,9 @@ fn main() {
             break;
         } else if select == 31 {
             double_map_reduce::double_map_reduce_test(&file_name, &file_stop_w);
+            break;
+        } else if select == 32 {
+            trinity::trinity_test(&file_name, &file_stop_w);
             break;
         } else {
             println!("Invalid style ... try again!");
